@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formas de Discriminación - Infografía</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .discrimination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .discrimination-card {
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discrimination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .discrimination-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+        }
+
+        .racism {
+            background: #ffe5e5;
+        }
+        .racism::before { background: #ff4757; }
+
+        .xenophobia {
+            background: #e5f3ff;
+        }
+        .xenophobia::before { background: #3742fa; }
+
+        .aporophobia {
+            background: #fff5e5;
+        }
+        .aporophobia::before { background: #ffa502; }
+
+        .ideology {
+            background: #f0e5ff;
+        }
+        .ideology::before { background: #a55eea; }
+
+        .gender {
+            background: #e5fff0;
+        }
+        .gender::before { background: #26de81; }
+
+        .antisemitism {
+            background: #ffe5f5;
+        }
+        .antisemitism::before { background: #fd79a8; }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .racism .card-icon { background: #ff4757; color: white; }
+        .xenophobia .card-icon { background: #3742fa; color: white; }
+        .aporophobia .card-icon { background: #ffa502; color: white; }
+        .ideology .card-icon { background: #a55eea; color: white; }
+        .gender .card-icon { background: #26de81; color: white; }
+        .antisemitism .card-icon { background: #fd79a8; color: white; }
+
+        .card-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2d3436;
+        }
+
+        .card-definition {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #636e72;
+        }
+
+        .card-stats {
+            background: rgba(255,255,255,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid;
+        }
+
+        .racism .card-stats { border-left-color: #ff4757; }
+        .xenophobia .card-stats { border-left-color: #3742fa; }
+        .aporophobia .card-stats { border-left-color: #ffa502; }
+        .ideology .card-stats { border-left-color: #a55eea; }
+        .gender .card-stats { border-left-color: #26de81; }
+        .antisemitism .card-stats { border-left-color: #fd79a8; }
+
+        .card-quote {
+            font-style: italic;
+            font-size: 0.95em;
+            color: #74b9ff;
+            text-align: center;
+            padding: 15px;
+            background: rgba(116, 185, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .impact-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .impact-stat {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .action-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .action-title {
+            font-size: 2em;
+            color: #2d3436;
+            margin-bottom: 30px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .action-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #00b894;
+        }
+
+        .action-item h4 {
+            color: #00b894;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .footer {
+            background: #2d3436;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            color: #74b9ff;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2em; }
+            .discrimination-grid { grid-template-columns: 1fr; }
+            .container { margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🤝 FORMAS DE DISCRIMINACIÓN</h1>
+            <p>La discriminación es una realidad que afecta a millones de personas en todo el mundo. Conocer sus formas es el primer paso para combatirla y construir una sociedad más justa e inclusiva.</p>
+        </header>
+
+        <main class="main-content">
+            <div class="discrimination-grid">
+                <div class="discrimination-card racism">
+                    <div class="card-icon">🚫</div>
+                    <h3 class="card-title">RACISMO</h3>
+                    <p class="card-definition">
+                        Discriminación basada en la raza, color de piel o características étnicas. Se manifiesta en actitudes, acciones o políticas que privilegian a un grupo racial sobre otro.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> El 76% de los afrodescendientes en América Latina reportan haber experimentado discriminación racial.
+                    </div>
+                    <div class="card-quote">
+                        "El racismo no nace, se aprende. Y si se puede aprender, se puede desaprender."
+                    </div>
+                </div>
+
+                <div class="discrimination-card xenophobia">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title">XENOFOBIA</h3>
+                    <p class="card-definition">
+                        Miedo, rechazo u hostilidad hacia las personas extranjeras o de otros países. Incluye prejuicios contra inmigrantes, refugiados y personas de nacionalidades diferentes.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> 1 de cada 3 migrantes internacionales enfrenta discriminación en su país de destino.
+                    </div>
+                    <div class="card-quote">
+                        "Ningún ser humano es ilegal. La diversidad cultural enriquece nuestras sociedades."
+                    </div>
+                </div>
+
+                <div class="discrimination-card aporophobia">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title">APOROFOBIA</h3>
+                    <p class="card-definition">
+                        Rechazo hacia las personas en situación de pobreza. Es la discriminación hacia los pobres, los sin recursos, quienes aparentan no poder ofrecer nada bueno a cambio.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> 736 millones de personas viven en extrema pobreza mundial, enfrentando discriminación diaria.
+                    </div>
+                    <div class="card-quote">
+                        "La pobreza no es una elección, pero nuestra respuesta hacia ella sí lo es."
+                    </div>
+                </div>
+
+                <div class="discrimination-card ideology">
+                    <div class="card-icon">💭</div>
+                    <h3 class="card-title">DISCRIMINACIÓN IDEOLÓGICA</h3>
+                    <p class="card-definition">
+                        Trato desigual basado en las ideas políticas, religiosas o filosóficas de una persona. Incluye persecución por creencias, opiniones o afiliaciones políticas.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> En 54 países existen leyes que restringen la libertad de expresión y pensamiento.
+                    </div>
+                    <div class="card-quote">
+                        "La libertad de pensamiento es el fundamento de toda democracia verdadera."
+                    </div>
+                </div>
+
+                <div class="discrimination-card gender">
+                    <div class="card-icon">⚖️</div>
+                    <h3 class="card-title">DISCRIMINACIÓN DE GÉNERO</h3>
+                    <p class="card-definition">
+                        Trato desigual basado en el género, identidad de género u orientación sexual. Incluye machismo, homofobia, transfobia y todas las formas de violencia de género.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> Las mujeres ganan 23% menos que los hombres por el mismo trabajo a nivel global.
+                    </div>
+                    <div class="card-quote">
+                        "La igualdad de género no es solo un derecho humano, es una necesidad social."
+                    </div>
+                </div>
+
+                <div class="discrimination-card antisemitism">
+                    <div class="card-icon">✡️</div>
+                    <h3 class="card-title">ANTISEMITISMO</h3>
+                    <p class="card-definition">
+                        Hostilidad, prejuicio o discriminación contra el pueblo judío. Una de las formas más antiguas y persistentes de discriminación en la historia humana.
+                    </p>
+                    <div class="card-stats">
+                        <strong>📊 Dato:</strong> Los incidentes antisemitas aumentaron 36% a nivel mundial en los últimos años.
+                    </div>
+                    <div class="card-quote">
+                        "Recordar la historia es la mejor manera de prevenir que se repita."
+                    </div>
+                </div>
+            </div>
+
+            <section class="impact-section">
+                <h2 class="impact-title">💔 IMPACTO GLOBAL</h2>
+                <p>La discriminación no solo afecta a las víctimas directas, sino que debilita el tejido social de toda la humanidad</p>
+                
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <div class="stat-number">2.4B</div>
+                        <div>Personas afectadas por algún tipo de discriminación</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-number">12%</div>
+                        <div>Pérdida promedio del PIB global por discriminación</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="stat-number">68M</div>
+                        <div>Desplazados forzosos por conflictos discriminatorios</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <h2 class="action-title">✊ ¿CÓMO PODEMOS ACTUAR?</h2>
+                
+                <div class="action-grid">
+                    <div class="action-item">
+                        <h4>🗣️ HABLA</h4>
+                        <p>No permanezcas en silencio ante actos discriminatorios. Alza tu voz de manera segura y constructiva.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4>📚 EDÚCATE</h4>
+                        <p>Aprende sobre diferentes culturas, historias y perspectivas. El conocimiento combate los prejuicios.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4>🤝 INCLUYE</h4>
+                        <p>Practica la inclusión activa en tu entorno. Crea espacios seguros para todas las personas.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4>⚖️ DENUNCIA</h4>
+                        <p>Reporta actos discriminatorios a las autoridades competentes. Tu acción puede salvar vidas.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4>❤️ EMPATIZA</h4>
+                        <p>Ponte en el lugar del otro. La empatía es la base de una sociedad más justa.</p>
+                    </div>
+                    <div class="action-item">
+                        <h4>🌱 REFLEXIONA</h4>
+                        <p>Examina tus propios prejuicios. El cambio comienza en nosotros mismos.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <h3>🌟 REFLEXIÓN FINAL</h3>
+            <p>
+                "La discriminación es una herida en el alma de la humanidad. Sanarla requiere el compromiso de todos y cada uno de nosotros. 
+                Cuando defendemos la dignidad de una persona, defendemos la dignidad de toda la humanidad."
+            </p>
+            <br>
+            <p><strong>Juntos podemos construir un mundo donde la diversidad sea celebrada, no castigada.</strong></p>
+        </footer>
+    </div>
+</body>
+</html>
